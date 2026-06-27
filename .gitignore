@@ -1,0 +1,17 @@
+# Virtual Environment
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Project Specifics
+dataset/
+uploads/
+reports/
+users.db
+
+# Note: If your skin_cancer_model_trained.h5 is larger than 100MB, 
+# you must uncomment the line below to prevent a GitHub upload error.
+# skin_cancer_model_trained.h5

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DermaScan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar"><div class="container-fluid"><a class="navbar-brand" href="#"><i class="bi bi-shield-shaded"></i> DermaScan</a><div><a href="{{ url_for('find_doctor_page') }}" class="btn btn-success me-2">Find a Doctor</a><a href="{{ url_for('profile') }}" class="btn btn-outline-primary me-2">My Profile</a><a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">Logout</a></div></div></nav>
+    <div class="container main-container">
+        <div class="card content-card">
+            <div class="card-body">
+                <h1 class="card-title text-center mb-2">Skin Lesion Classifier</h1>
+                <h3 class="card-text text-center text-muted mb-4">Welcome, {{ name }}!</h3>
+                <div class="image-preview mb-3" id="imagePreview"><img src="" alt="Image Preview" class="image-preview__image"><span class="image-preview__default-text"><i class="bi bi-image"></i><br>Drag & Drop or Click to Upload</span></div>
+                <div class="upload-section"><input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg" hidden></div>
+                <div class="d-grid mt-3"><button class="btn btn-primary btn-lg" id="btn-predict"><span class="spinner-border spinner-border-sm hidden" id="spinner"></span><span id="predict-text">Classify</span></button></div>
+                
+                <div id="result-container" class="mt-4 hidden">
+                    <div class="text-center">
+                        <h5 class="mb-3" id="result-header">Prediction Result</h5>
+                        <p id="result" class="result-badge"></p>
+                    </div>
+                    
+                    <div class="accordion mt-4" id="details-accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-desc">Description</button></h2>
+                            <div id="collapse-desc" class="accordion-collapse collapse show" data-bs-parent="#details-accordion">
+                                <div class="accordion-body text-start" id="description-body"></div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-symptoms">Common Symptoms</button></h2>
+                            <div id="collapse-symptoms" class="accordion-collapse collapse" data-bs-parent="#details-accordion">
+                                <div class="accordion-body text-start" id="symptoms-body"></div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-risks">Risk Factors</button></h2>
+                            <div id="collapse-risks" class="accordion-collapse collapse" data-bs-parent="#details-accordion">
+                                <div class="accordion-body text-start" id="risk-factors-body"></div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-treatment">Treatment Overview</button></h2>
+                            <div id="collapse-treatment" class="accordion-collapse collapse" data-bs-parent="#details-accordion">
+                                <div class="accordion-body text-start" id="treatment-body"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="recommendation-alert" class="alert mt-4" role="alert"><h5 class="alert-heading">Recommendation</h5><p id="recommendation-text" class="mb-0"></p></div>
+                    <div class="d-grid mt-3"><button class="btn btn-secondary" id="btn-download">Download Report</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="card content-card mt-4"><div class="card-body text-center"><h3 class="card-title">💡 Skin Health Tip of the Day</h3><p class="text-muted fst-italic mt-3">"{{ tip_of_the_day }}"</p></div></div>
+        <div class="alert alert-warning mt-4 disclaimer" role="alert"><i class="bi bi-exclamation-triangle-fill"></i> <strong>Disclaimer:</strong> This is an educational tool, not a substitute for professional medical advice.</div>
+    </div>
+    <footer class="footer mt-auto py-3"><div class="container text-center"><span>© 2025 DermaScan. All Rights Reserved.</span></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

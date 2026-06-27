@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Dermatologist - DermaScan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('dashboard') }}"><i class="bi bi-shield-shaded"></i> DermaScan</a>
+            <div>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary me-2">Dashboard</a>
+                <a href="{{ url_for('profile') }}" class="btn btn-outline-primary me-2">My Profile</a>
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-container">
+        <div class="card content-card">
+            <div class="card-body">
+                <h1 class="card-title text-center mb-4">Find a Dermatologist</h1>
+                <p class="text-center text-muted">Enter a city to search for specialists in that area.</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="city-input" class="form-control" placeholder="Enter your city (e.g., Mumbai)">
+                    <button class="btn btn-success" id="btn-find-dermatologist">
+                        <i class="bi bi-geo-alt-fill"></i> Search
+                    </button>
+                </div>
+                </div>
+        </div>
+    </div>
+    
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center"><span>© 2025 DermaScan. All Rights Reserved.</span></div>
+    </footer>
+    <script src="{{ url_for('static', filename='find_doctor.js') }}"></script>
+</body>
+</html>
